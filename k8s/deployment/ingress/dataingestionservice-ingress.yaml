@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: dataIgestionService-ingress
+  name: dataingestionservice-ingress
   namespace: energyco
 spec:
   ingressClassName: kong
@@ -13,6 +13,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: userauth-service
+            name: dataingestionservice-service
             port:
               number: 80

@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dataIgestionService-service
+  name: dataingestionservice-service
   namespace: energyco
 spec:
   selector:
-    app: dataIgestionService
+    app: dataingestionservice
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 8080
+      port: 81
+      targetPort: 8081
   type: ClusterIP

@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dataIgestionService-deployment
+  name: dataingestionservicedb-deployment
   namespace: energyco
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: dataIgestionServicedb
+      app: dataingestionservicedb
   template:
     metadata:
       labels:
-        app: dataIgestionServicedb
+        app: dataingestionservicedb
     spec:
       containers:
-        - name: dataIgestionServicedb
+        - name: dataingestionservicedb
           image: postgres:13
           ports:
             - containerPort: 5432
           env:
             - name: POSTGRES_DB
-              value: "dataIgestionServicedb"
+              value: "dataingestionservicedb"
             - name: POSTGRES_USER
               value: "userauthuser"
             - name: POSTGRES_PASSWORD

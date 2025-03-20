@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dataIgestionService-deployment
+  name: dataingestionservice-deployment
   namespace: energyco
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: userauth
+      app: dataingestionservice
   template:
     metadata:
       labels:
-        app: userauth
+        app: dataingestionservice
     spec:
       containers:
-        - name: userauth
-          image: victodomvar/dataIgestionService:latest
+        - name: dataingestionservice
+          image: victodomvar/dataingestionservice:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: "prod"
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://userauthdb-service:5432/userauthdb"
+              value: "jdbc:postgresql://dataingestionservicedb-service:5433/dataingestionservicedb"
             - name: SPRING_DATASOURCE_USERNAME
-              value: "userauthuser"
+              value: "dataingestionuser"
             - name: SPRING_DATASOURCE_PASSWORD
-              value: "userauthpassword"
+              value: "dataingestionpassword"
