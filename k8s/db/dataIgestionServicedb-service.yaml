@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dataIgestionServicedb-service
+  namespace: energyco
+spec:
+  selector:
+    app: dataIgestionServicedb
+  ports:
+    - protocol: TCP
+      port: 5433
+      targetPort: 5433
+  type: ClusterIP

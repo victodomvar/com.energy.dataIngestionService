@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dataIgestionService-deployment
+  namespace: energyco
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dataIgestionServicedb
+  template:
+    metadata:
+      labels:
+        app: dataIgestionServicedb
+    spec:
+      containers:
+        - name: dataIgestionServicedb
+          image: postgres:13
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: "dataIgestionServicedb"
+            - name: POSTGRES_USER
+              value: "userauthuser"
+            - name: POSTGRES_PASSWORD
+              value: "userauthpassword"
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc
